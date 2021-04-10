@@ -1,7 +1,7 @@
 const main = document.querySelector('main');
 const screens = {};
 //-------------------------------------------
-const alarms = [];
+const reminders = [];
 //-------------------------------------------
 (() => start())();
 function start() {
