@@ -1,0 +1,45 @@
+#main-logo {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+#main-logo img {
+  min-width: 300px;
+  width: 100%;
+}
+
+#main-logo button {
+  width: 50%;
+  height: 50px;
+  border-radius: 10px;
+  margin-top: 50px;
+  cursor: pointer;
+
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--charleston-green);
+
+  box-shadow: 0px 2px 1px 1px var(--antique-ruby);
+  transition-property: filter;
+  transition-duration: 0.4s;
+}
+
+#main-logo button:hover,
+#main-logo button:active {
+  filter: brightness(0.8);
+}
+
+.footer {
+  cursor: pointer;
+  position: absolute;
+  bottom: 10%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--alabaster);
+  text-shadow: 2px 2px 1px var(--antique-ruby);
+}
