@@ -1,20 +1,25 @@
 const main = document.querySelector('main');
+const screens = {};
+
 //-----------------------------------------
 (() => start())();
 function start() {
   loadHome();
 }
-//==========================================
-function loadHome() {
-  main['innerHTML'] = home_template;
+//===========================================================================
+async function loadHome() {
+  if (screens['home']) main['innerHTML'] = screens['home'];
+  else main['innerHTML'] = await fetchData('../templates/home.html', 'home');
 }
-function loadList() {
-  main['innerHTML'] = list_template;
+async function loadList() {
+  if (screens['list']) main['innerHTML'] = screens['list'];
+  else main['innerHTML'] = await fetchData('../templates/list.html', 'list');
 }
-function loadEdit() {
-  main['innerHTML'] = edit_template;
+async function loadEdit() {
+  if (screens['edit']) main['innerHTML'] = screens['edit'];
+  else main['innerHTML'] = await fetchData('../templates/edit.html', 'edit');
 }
-//==========================================
+//============================================================================
 function appHelp() {
   alert('teste');
 }
