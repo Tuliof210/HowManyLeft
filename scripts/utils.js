@@ -1,5 +1,8 @@
 const delay = ms => new Promise(resolve => setTimeout(() => resolve(true), ms));
 
+const turnIntoString = (value, size, fill) =>
+  value.toString().padStart(size, fill);
+
 const fetchData = (path, key) =>
   fetch(path)
     .then(res => res.text())

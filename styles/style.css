@@ -48,3 +48,25 @@ main {
 .default-btn:active {
   filter: brightness(0.8);
 }
+
+/*SCROLLBAR*/
+/*====================================================*/
+.custom-scrollbar {
+  overflow-x: overlay;
+}
+.custom-scrollbar::-webkit-scrollbar {
+  width: 10px;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background-color: var(--antique-ruby);
+}
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+.custom-scrollbar::-webkit-scrollbar-track-piece:end {
+  background: transparent;
+}
+.custom-scrollbar::-webkit-scrollbar-track-piece:start {
+  background: transparent;
+}
+/*=====================================================*/

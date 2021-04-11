@@ -18,6 +18,11 @@
   width: 100px;
 }
 
+.list-main {
+  overflow: auto;
+  max-height: 75%;
+}
+
 .reminder-row {
   display: flex;
   justify-content: space-between;
@@ -43,6 +48,7 @@
   cursor: pointer;
 }
 .reminder-value {
+  text-align: right;
   margin-bottom: 3px;
   line-height: 1;
   font-size: 30px;
