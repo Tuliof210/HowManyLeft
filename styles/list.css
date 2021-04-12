@@ -58,6 +58,7 @@
   font-weight: 700;
   color: var(--antique-ruby);
   cursor: pointer;
+  overflow-x: hidden;
 }
 .reminder-label {
   text-align: right;

@@ -16,6 +16,8 @@ function setLimits() {
 }
 
 function getData() {
+  console.time('create process');
+
   input['title'] = document.querySelector('#input-reminder-title');
   input['date'] = document.querySelector('#input-reminder-date');
   input['hour'] = document.querySelector('#input-reminder-time');
@@ -55,6 +57,7 @@ function modelData({ title, date, hour }) {
       unstructuredDate: splitDate(date, hour),
     });
     displayList();
+    console.timeEnd('create process');
   } else alert('the reminder only works for future events, plese try again');
 }
 
