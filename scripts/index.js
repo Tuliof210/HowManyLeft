@@ -28,9 +28,19 @@ async function displayEdit() {
 //============================================================================
 
 function loadData() {
+  console.time('load reminders');
   try {
-    const aux = localStorage.getItem('reminders');
-    console.log(JSON.parse(aux));
+    const aux = JSON.parse(localStorage.getItem('reminders'));
+    aux.forEach(element => {
+      modelLoadedReminder({
+        id: element.id,
+        title: element.title,
+        date: element.date,
+        hour: element.hour,
+      });
+      localStorage.setItem('reminders', JSON.stringify(reminders));
+      console.timeEnd('load reminders');
+    });
   } catch (err) {
     console.error('error to load previous reminders', err);
   } finally {

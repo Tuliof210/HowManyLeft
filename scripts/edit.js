@@ -16,13 +16,13 @@ function setLimits() {
 }
 
 function getData() {
-  console.time('create process');
+  console.time('create reminder');
 
   input['title'] = document.querySelector('#input-reminder-title');
   input['date'] = document.querySelector('#input-reminder-date');
   input['hour'] = document.querySelector('#input-reminder-time');
 
-  modelData({
+  modelNewReminder({
     title: input['title'].value || 'Untitled Event',
     date: input['date'].value,
     hour: input['hour'].value || '00:00',
@@ -39,27 +39,47 @@ function valiDate(date, hour) {
   let hh = hour[0];
   let min = hour[1];
 
-  // console.log({ dd, mm, yyyy, hh, min });
-  // console.log({
-  //   now: new Date(Date.now()),
-  //   input: new Date(yyyy, mm, dd, hh, min, 0),
-  //   ok: new Date(Date.now()) < new Date(yyyy, mm, dd, hh, min, 0),
-  // });
-
   return new Date(Date.now()) < new Date(yyyy, mm, dd, hh, min, 0);
 }
 
-function modelData({ title, date, hour }) {
+function modelLoadedReminder({ id, title, date, hour }) {
+  console.log({ title, date, hour });
+  if (valiDate(date, hour))
+    reminders.push({
+      id,
+      title,
+      date,
+      hour,
+      unstructuredDate: splitDate(date, hour),
+    });
+  else
+    reminders.push({
+      id,
+      title,
+      date,
+      hour,
+      unstructuredDate: {
+        days: 0,
+        hours: 0,
+        minutes: 0,
+        seconds: 0,
+      },
+    });
+}
+
+function modelNewReminder({ title, date, hour }) {
   console.log({ title, date, hour });
   if (valiDate(date, hour)) {
     reminders.push({
       id: Date.now().toString(),
-      title: title,
+      title,
+      date,
+      hour,
       unstructuredDate: splitDate(date, hour),
     });
     localStorage.setItem('reminders', JSON.stringify(reminders));
     displayList();
-    console.timeEnd('create process');
+    console.timeEnd('create reminder');
   } else {
     alert('the reminder only works for future events, plese try again');
   }
