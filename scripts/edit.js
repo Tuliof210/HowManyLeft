@@ -37,12 +37,12 @@ function valiDate(date, hour) {
   let hh = hour[0];
   let min = hour[1];
 
-  console.log({ dd, mm, yyyy, hh, min });
-  console.log({
-    now: new Date(Date.now()),
-    input: new Date(yyyy, mm, dd, hh, min, 0),
-    ok: new Date(Date.now()) < new Date(yyyy, mm, dd, hh, min, 0),
-  });
+  // console.log({ dd, mm, yyyy, hh, min });
+  // console.log({
+  //   now: new Date(Date.now()),
+  //   input: new Date(yyyy, mm, dd, hh, min, 0),
+  //   ok: new Date(Date.now()) < new Date(yyyy, mm, dd, hh, min, 0),
+  // });
 
   return new Date(Date.now()) < new Date(yyyy, mm, dd, hh, min, 0);
 }
@@ -59,20 +59,14 @@ function modelData({ title, date, hour }) {
 }
 
 function splitDate(date, hour) {
-  compareDates(date, hour);
-
-  date = date.split('-');
-  hour = hour.split(':');
-
-  return {
-    days: 78,
-    hours: hour[0],
-    minutes: hour[1],
+  const unstructuredDate = {
+    days: 0,
+    hours: 0,
+    minutes: 0,
     seconds: 0,
   };
-}
-
-function compareDates(date, hour) {
+  //86400 = 24 horas;
+  //3600 = 1 hora;
   date = date.split('-');
   hour = hour.split(':');
 
@@ -82,6 +76,28 @@ function compareDates(date, hour) {
   let hh = hour[0];
   let min = hour[1];
 
-  console.log({ date, hour });
-  console.log(new Date(Date.now()) - new Date(yyyy, mm, dd, hh, min, 0));
+  let diffSeconds = parseInt(
+    Math.abs(new Date(Date.now()) - new Date(yyyy, mm, dd, hh, min, 0)) / 1000
+  );
+  console.log({ diffSeconds });
+
+  while (diffSeconds) {
+    if (diffSeconds >= 86400) {
+      unstructuredDate['days']++;
+      diffSeconds -= 86400;
+    } else if (diffSeconds >= 3600) {
+      unstructuredDate['hours']++;
+      diffSeconds -= 3600;
+    } else if (diffSeconds >= 60) {
+      unstructuredDate['minutes']++;
+      diffSeconds -= 60;
+    } else {
+      unstructuredDate['seconds'] = diffSeconds;
+      diffSeconds = 0;
+    }
+  }
+
+  console.log({ diffSeconds, unstructuredDate });
+
+  return unstructuredDate;
 }

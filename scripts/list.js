@@ -34,7 +34,7 @@ function populateReminders() {
             <div class="days">
               <div class="reminder-value">${turnIntoString(
                 reminder['unstructuredDate'].days,
-                3,
+                2,
                 '0'
               )}</div>
               <div class="reminder-label">days</div>
@@ -111,7 +111,7 @@ function updateValues(id, date) {
     ).innerHTML = turnIntoString(date.hours, 2, '0');
     document.querySelector(
       `#reminder-row-${id} .reminder-wrapper .reminder-date .days .reminder-value`
-    ).innerHTML = turnIntoString(date.days, 3, '0');
+    ).innerHTML = turnIntoString(date.days, 2, '0');
   } catch (e) {
     reminders.forEach(destroyTimeOut);
   }
