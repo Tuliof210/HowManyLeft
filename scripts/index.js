@@ -1,9 +1,10 @@
 const main = document.querySelector('main');
 const screens = {};
+const reminders = [];
 //-------------------------------------------
 (() => start())();
 function start() {
-  displayHome();
+  loadData();
 }
 function appHelp() {
   alert('teste');
@@ -25,3 +26,14 @@ async function displayEdit() {
   setLimits();
 }
 //============================================================================
+
+function loadData() {
+  try {
+    const aux = localStorage.getItem('reminders');
+    console.log(JSON.parse(aux));
+  } catch (err) {
+    console.error('error to load previous reminders', err);
+  } finally {
+    displayHome();
+  }
+}

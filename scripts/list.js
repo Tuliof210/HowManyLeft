@@ -1,27 +1,3 @@
-const reminders = [
-  {
-    id: '46543434',
-    title: 'Entregar essa bosta',
-    unstructuredDate: {
-      days: 1,
-      hours: 0,
-      minutes: 0,
-      seconds: 15,
-    },
-  },
-  {
-    id: '139539',
-    title: 'Aniversario Lele',
-    unstructuredDate: {
-      days: 45,
-      hours: 3,
-      minutes: 11,
-      seconds: 8,
-    },
-  },
-];
-//-------------------------------------------
-//-------------------------------------------
 function populateReminders() {
   let remindersHTML = ``;
   reminders.forEach(reminder => {
@@ -93,7 +69,10 @@ function setCounter(data) {
       data['unstructuredDate'].minutes = 59;
       data['unstructuredDate'].hours = 23;
       data['unstructuredDate'].days -= 1;
-    } else destroyTimeOut(data);
+    } else {
+      destroyTimeOut(data);
+      alerEndTimeout(data['id']);
+    }
     updateValues(data['id'], data['unstructuredDate']);
   }, 1000);
 }
@@ -117,9 +96,17 @@ function updateValues(id, date) {
   }
 }
 
+function alerEndTimeout(id) {
+  document.querySelector(
+    `#reminder-row-${id} .reminder-wrapper .reminder-date`
+  ).innerHTML = '<div class="reminder-ends">the date has arrived</div>';
+}
+
 function destroyTimeOut(item) {
-  clearInterval(item['counter']);
-  delete item['counter'];
+  if (item['counter']) {
+    clearInterval(item['counter']);
+    delete item['counter'];
+  }
 }
 
 function removeReminver(id) {
@@ -128,4 +115,5 @@ function removeReminver(id) {
 
   destroyTimeOut(reminders[index]);
   reminders.splice(index, 1);
+  localStorage.setItem('reminders', JSON.stringify(reminders));
 }

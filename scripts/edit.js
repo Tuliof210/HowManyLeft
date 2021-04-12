@@ -23,9 +23,9 @@ function getData() {
   input['hour'] = document.querySelector('#input-reminder-time');
 
   modelData({
-    title: input['title'].value,
+    title: input['title'].value || 'Untitled Event',
     date: input['date'].value,
-    hour: input['hour'].value,
+    hour: input['hour'].value || '00:00',
   });
 }
 
@@ -50,15 +50,19 @@ function valiDate(date, hour) {
 }
 
 function modelData({ title, date, hour }) {
+  console.log({ title, date, hour });
   if (valiDate(date, hour)) {
     reminders.push({
       id: Date.now().toString(),
       title: title,
       unstructuredDate: splitDate(date, hour),
     });
+    localStorage.setItem('reminders', JSON.stringify(reminders));
     displayList();
     console.timeEnd('create process');
-  } else alert('the reminder only works for future events, plese try again');
+  } else {
+    alert('the reminder only works for future events, plese try again');
+  }
 }
 
 function splitDate(date, hour) {
