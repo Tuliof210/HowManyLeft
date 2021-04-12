@@ -2,7 +2,6 @@ const reminders = [
   {
     id: '46543434',
     title: 'Entregar essa bosta',
-    date: '',
     unstructuredDate: {
       days: 1,
       hours: 0,
@@ -13,7 +12,6 @@ const reminders = [
   {
     id: '139539',
     title: 'Aniversario Lele',
-    date: '',
     unstructuredDate: {
       days: 45,
       hours: 3,

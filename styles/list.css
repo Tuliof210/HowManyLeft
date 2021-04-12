@@ -12,7 +12,7 @@
   left: 50%;
   transform: translate(-50%, -50%);
 }
-.add-btn {
+.add-new-btn {
   line-height: 1;
   font-size: 40px;
   width: 100px;
@@ -38,8 +38,11 @@
   cursor: pointer;
 }
 .reminder-title {
-  font-size: 20px;
+  font-size: 17px;
+  min-height: 40px;
+  line-height: 1;
   cursor: pointer;
+  overflow-x: hidden;
 }
 .reminder-date {
   margin: 10px 0 0;

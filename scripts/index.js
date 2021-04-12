@@ -22,5 +22,6 @@ async function displayList() {
 async function displayEdit() {
   if (screens['edit']) main['innerHTML'] = screens['edit'];
   else main['innerHTML'] = await fetchData('../templates/edit.html', 'edit');
+  setLimits();
 }
 //============================================================================
