@@ -1,5 +1,5 @@
 // Define o nome do cache atual, considerando a sua versão.
-var cacheName = 'HowManyeLeft-v1.0';
+var cacheName = 'HowManyeLeft-v2.0';
 
 self.addEventListener('install', event => {
   caches.open(cacheName).then(cache => {
