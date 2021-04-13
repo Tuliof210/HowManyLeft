@@ -45,7 +45,7 @@ function populateReminders() {
           </div>
         </div>
         <div onclick="removeReminver(${reminder.id})" class="reminder-destroy">
-          <img src="../assets/icons/trash.svg" alt="Delete" />
+          <img src="../assets/images/trash.svg" alt="Delete" />
         </div>
       </div>
     `;
