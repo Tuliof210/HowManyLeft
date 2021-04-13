@@ -1,5 +1,6 @@
 const input = {};
 
+//impede que o date picker exiba datas anteriores à atual
 function setLimits() {
   const today = new Date();
 
@@ -15,6 +16,7 @@ function setLimits() {
     .setAttribute('min', `${yyyy}-${mm}-${dd}`);
 }
 
+//recebe informações do input
 function getData() {
   console.time('create reminder');
 
@@ -29,6 +31,7 @@ function getData() {
   });
 }
 
+//valida se a data informada é posterior à atual
 function valiDate(date, hour) {
   date = date.split('-');
   hour = hour.split(':');
@@ -42,6 +45,7 @@ function valiDate(date, hour) {
   return new Date(Date.now()) < new Date(yyyy, mm, dd, hh, min, 0);
 }
 
+//Carrega os lembretes do localstorage
 function modelLoadedReminder({ id, title, date, hour }) {
   if (valiDate(date, hour))
     reminders.push({
@@ -66,6 +70,7 @@ function modelLoadedReminder({ id, title, date, hour }) {
     });
 }
 
+//modela o novo lembrete
 function modelNewReminder({ title, date, hour }) {
   if (valiDate(date, hour)) {
     reminders.push({
@@ -83,6 +88,7 @@ function modelNewReminder({ title, date, hour }) {
   }
 }
 
+//Calcula quanto tempo falta [minutos, dias, etc]
 function splitDate(date, hour) {
   const unstructuredDate = {
     days: 0,

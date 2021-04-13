@@ -1,3 +1,4 @@
+//popula a lista de lembretes
 function populateReminders() {
   let remindersHTML = ``;
   reminders.forEach(reminder => {
@@ -53,6 +54,7 @@ function populateReminders() {
   document.querySelector('.list-main').innerHTML = remindersHTML;
 }
 
+//define as operações de contagem para serem executadas a cada 1000ms
 function setCounter(data) {
   return setInterval(() => {
     if (data['unstructuredDate'].seconds) {
@@ -77,6 +79,7 @@ function setCounter(data) {
   }, 1000);
 }
 
+//atualiza o valor do momento atual [dias, horas, etc] no template html
 function updateValues(id, date) {
   try {
     document.querySelector(
@@ -96,12 +99,14 @@ function updateValues(id, date) {
   }
 }
 
+//exibe uma mensagem quando o contador zerar
 function alerEndTimeout(id) {
   document.querySelector(
     `#reminder-row-${id} .reminder-wrapper .reminder-date`
   ).innerHTML = '<div class="reminder-ends">the date has arrived</div>';
 }
 
+//destroi a função settimeout, evitando sobrecarga
 function destroyTimeOut(item) {
   if (item['counter']) {
     clearInterval(item['counter']);
@@ -109,6 +114,7 @@ function destroyTimeOut(item) {
   }
 }
 
+//deleta um lembrete
 function removeReminver(id) {
   document.querySelector(`#reminder-row-${id}`).remove();
   const index = reminders.findIndex(item => item.id == id);

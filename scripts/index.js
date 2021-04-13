@@ -2,16 +2,19 @@ const main = document.querySelector('main');
 const screens = {};
 const reminders = [];
 //-------------------------------------------
+//a função se auto executa assim que o script carrega
 (() => start())();
 function start() {
   loadData();
 }
+// disparado quando o usuário clicar no botao 'help' da home screen
 function appHelp() {
   alert(
     'É simples, basta entar e clicar no botão "+" para adicionar um novo lembrete'
   );
 }
 //===========================================================================
+// carregam os templates de cada tela
 async function displayHome() {
   if (screens['home']) main['innerHTML'] = screens['home'];
   else main['innerHTML'] = await fetchData('../templates/home.html', 'home');
@@ -27,7 +30,7 @@ async function displayEdit() {
   setLimits();
 }
 //============================================================================
-
+// carrega os dados do localstorage
 function loadData() {
   console.time('load reminders');
   try {
