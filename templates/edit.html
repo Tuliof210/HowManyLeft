@@ -6,16 +6,35 @@
   />
 </div>
 <div class="edit-main custom-scrollbar">
-  <input
-    id="input-reminder-title"
-    class="edit-input"
-    name="title"
-    type="text"
-    placeholder="Reminder title"
-    maxlength=""
-  />
-  <input id="input-reminder-date" class="edit-input" type="date" name="date" />
-  <input id="input-reminder-time" class="edit-input" type="time" name="time" />
+  <div class="input-container">
+    <label for="title">Reminder Title</label>
+    <input
+      id="input-reminder-title"
+      class="edit-input"
+      name="title"
+      type="text"
+      placeholder="Reminder title"
+      maxlength=""
+    />
+  </div>
+  <div class="input-container">
+    <label for="title">Reminder Date</label>
+    <input
+      id="input-reminder-date"
+      class="edit-input"
+      type="date"
+      name="date"
+    />
+  </div>
+  <div class="input-container">
+    <label for="title">Reminder Time</label>
+    <input
+      id="input-reminder-time"
+      class="edit-input"
+      type="time"
+      name="time"
+    />
+  </div>
 </div>
 <div class="edit-footer">
   <button onclick="getData()" class="default-btn save-btn">Save</button>

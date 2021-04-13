@@ -43,7 +43,6 @@ function valiDate(date, hour) {
 }
 
 function modelLoadedReminder({ id, title, date, hour }) {
-  console.log({ title, date, hour });
   if (valiDate(date, hour))
     reminders.push({
       id,
@@ -68,7 +67,6 @@ function modelLoadedReminder({ id, title, date, hour }) {
 }
 
 function modelNewReminder({ title, date, hour }) {
-  console.log({ title, date, hour });
   if (valiDate(date, hour)) {
     reminders.push({
       id: Date.now().toString(),
@@ -106,7 +104,6 @@ function splitDate(date, hour) {
   let diffSeconds = parseInt(
     Math.abs(new Date(Date.now()) - new Date(yyyy, mm, dd, hh, min, 0)) / 1000
   );
-  console.log({ diffSeconds });
 
   while (diffSeconds) {
     if (diffSeconds >= 86400) {
@@ -123,8 +120,6 @@ function splitDate(date, hour) {
       diffSeconds = 0;
     }
   }
-
-  console.log({ diffSeconds, unstructuredDate });
 
   return unstructuredDate;
 }

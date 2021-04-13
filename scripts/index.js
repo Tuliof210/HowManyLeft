@@ -7,7 +7,9 @@ function start() {
   loadData();
 }
 function appHelp() {
-  alert('teste');
+  alert(
+    'É simples, basta entar e clicar no botão "+" para adicionar um novo lembrete'
+  );
 }
 //===========================================================================
 async function displayHome() {
@@ -17,7 +19,6 @@ async function displayHome() {
 async function displayList() {
   if (screens['list']) main['innerHTML'] = screens['list'];
   else main['innerHTML'] = await fetchData('../templates/list.html', 'list');
-  console.log({ reminders });
   populateReminders();
 }
 async function displayEdit() {
